@@ -1,0 +1,24 @@
+services:
+  robosim:
+    image: robosim
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: robosim
+    stop_signal: SIGINT
+    network_mode: host
+    #priviledged: true
+    stdin_open: true
+    tty: true
+    user: ros
+    volumes:
+      - $HOME/Desktop/SDP_Docker/src:/mysrc
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    environment:
+      - DISPLAY
+      - QT_X11_NO_MITSHM=1
+      - ROS_DOMAIN_ID=42
+    devices:
+      - /dev/dri:/dev/dri
+    entrypoint: /bin/bash /ros_entrypoint.sh
+    command: bash
