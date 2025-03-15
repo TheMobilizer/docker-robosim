@@ -12,7 +12,7 @@ services:
     tty: true
     user: ros
     volumes:
-      - $HOME/Desktop/SDP_Docker/src:/mysrc
+      - $PWD/src:/mysrc
       - /tmp/.X11-unix:/tmp/.X11-unix
     environment:
       - DISPLAY
